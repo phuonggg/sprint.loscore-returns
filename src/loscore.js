@@ -1,4 +1,4 @@
-//Hello worls!!!
+//Hello worls!!!!
 
 // Let's make an object and start adding methods to it!
 class LoScore {
