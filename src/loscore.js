@@ -1,4 +1,4 @@
-console.log("Hello World");
+//console.log("Hello World");
 // Let's make an object and start adding methods to it!
 class LoScore {
   identity(val) {
@@ -13,7 +13,7 @@ class LoScore {
     // YOUR CODE HERE
     const seen = {};
     const ret_arr = [];
-    for (var i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       if (!seen[array[i]]) {
         ret_arr.push(array[i]);
         seen[array[i]] = true;
@@ -41,7 +41,7 @@ class LoScore {
 
   map(collection, iteratee) {
     // YOUR CODE HERE
-    let resultArr = [];
+    const resultArr = [];
     this.each(collection, function(val) {
       resultArr.push(iteratee(val));
     });
@@ -55,7 +55,7 @@ class LoScore {
   }
 
   reject(collection, test) {
-    let result = [];
+    const result = [];
     this.filter(collection, function(val) {
       if (!test(val)) {
         result.push(val);
@@ -124,18 +124,17 @@ class LoScore {
 
   memoize(func) {
     // YOUR CODE HERE
-    let cache = {};
+    const cache = {};
     return function() {
-      let key = JSON.stringify(arguments);
+      const key = JSON.stringify(arguments);
       if (cache[key]) {
         //console.log(cache)
         return cache[key];
-      } else {
-        let val = func.apply(null, arguments);
-        //console.log(val)
-        cache[key] = val;
-        return val;
       }
+      const val = func.apply(null, arguments);
+      //console.log(val)
+      cache[key] = val;
+      return val;
     };
   }
 
