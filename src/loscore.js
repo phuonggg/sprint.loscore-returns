@@ -75,17 +75,32 @@ class LoScore {
 
   every(collection, test) {
     // YOUR CODE HERE
-    return this.reduce(
-      collection,
-      (boolean, item) => {
-        if (!boolean) {
-          return false;
+    if (collection.length == 0) {
+      return true;
+    }
+    if (test === undefined) {
+      for (let i of collection) {
+        if (i) {
+          return true;
         }
-        if (typeof test === "undefined") return item;
-        return test(item);
+        return false;
+      }
+    }
+    let bool = this.reduce(
+      collection,
+      (accumulator, value) => {
+        accumulator.push(test(value));
+        return accumulator;
       },
-      true
+      []
     );
+    let check = true;
+    for (let i of bool) {
+      if (!i) {
+        check = false;
+      }
+    }
+    return check;
   }
 
   /**
