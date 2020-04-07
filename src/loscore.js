@@ -5,10 +5,8 @@ class LoScore {
     return val;
   }
 
-  /**
-  | ARRAYS
-  |~~~~~~~~~~
-  * */
+  //ARRAYS
+
   uniq(array) {
     // YOUR CODE HERE
     const seen = {};
@@ -22,10 +20,8 @@ class LoScore {
     return ret_arr;
   }
 
-  /**
-  | COLLECTIONS
-  |~~~~~~~~~~
-  * */
+  // COLLECTIONS
+
   each(collection, iterator) {
     if (collection instanceof Array) {
       for (let i = 0; i < collection.length; i += 1) {
@@ -42,7 +38,7 @@ class LoScore {
   map(collection, iteratee) {
     // YOUR CODE HERE
     const resultArr = [];
-    this.each(collection, function(val) {
+    this.each(collection, (val) => {
       resultArr.push(iteratee(val));
     });
     return resultArr;
@@ -75,18 +71,18 @@ class LoScore {
 
   every(collection, test) {
     // YOUR CODE HERE
-    if (collection.length == 0) {
+    if (collection.length === 0) {
       return true;
     }
     if (test === undefined) {
-      for (let i of collection) {
+      for (const i of collection) {
         if (i) {
           return true;
         }
         return false;
       }
     }
-    let bool = this.reduce(
+    const bool = this.reduce(
       collection,
       (accumulator, value) => {
         accumulator.push(test(value));
@@ -95,7 +91,7 @@ class LoScore {
       []
     );
     let check = true;
-    for (let i of bool) {
+    for (const i of bool) {
       if (!i) {
         check = false;
       }
@@ -128,7 +124,7 @@ class LoScore {
     let result;
     // console.log(func);
     function f(args) {
-      if (counter == 0) {
+      if (counter === 0) {
         result = func(args);
       }
       counter++;
