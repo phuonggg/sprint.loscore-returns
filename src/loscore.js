@@ -51,13 +51,10 @@ class LoScore {
   }
 
   reject(collection, test) {
-    const result = [];
-    this.filter(collection, function(val) {
-      if (!test(val)) {
-        result.push(val);
-      }
+    // const result = [];
+    return this.filter(collection, (val) => {
+      return !test(val);
     });
-    return result;
   }
 
   reduce(collection, iterator, accumulator) {
@@ -136,13 +133,14 @@ class LoScore {
   memoize(func) {
     // YOUR CODE HERE
     const cache = {};
-    return function() {
-      const key = JSON.stringify(arguments);
+    return function(...args) {
+      const key = JSON.stringify(args);
       if (cache[key]) {
         //console.log(cache)
         return cache[key];
       }
-      const val = func.apply(null, arguments);
+
+      const val = func(...args);
       //console.log(val)
       cache[key] = val;
       return val;
